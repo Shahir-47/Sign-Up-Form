@@ -74,6 +74,13 @@ input[type]{
     color: #e0e2f7;
 }
 
+input[type]:placeholder-shown {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+}
+
 input[type]:not(:placeholder-shown):not(:focus):valid{
     border-bottom: 2px solid #31ad69;    
 }
@@ -81,6 +88,7 @@ input[type]:not(:placeholder-shown):not(:focus):valid{
 input[type]:not(:placeholder-shown):not(:focus):valid+.tick{
     color: #31ad69;
 }
+
 
 .tick{
     color: transparent;
@@ -90,14 +98,49 @@ input[type]:not(:placeholder-shown):not(:focus):valid+.tick{
     display: block;
     font-size: 20px;
     transition: all .5s ease-in;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
 }
 
 input[type]:not(:placeholder-shown):not(:focus):invalid{
-    border-bottom: 2px solid #ad3131;
+    border-bottom: 2px solid red;
 }
 
 input[type]:not(:placeholder-shown):not(:focus):invalid ~.cross{
-    color: #ad3131;
+    color: red;
+}
+
+input[type]:not(:placeholder-shown):valid~.error-msg{
+    display: none;
+}
+
+input[type]:not(:placeholder-shown):not(:focus):invalid ~.error-msg{
+    color: red;
+}
+
+.error-msg{
+    position: absolute;
+    font-size: 20px;
+    margin-top: 45px;
+    margin-left: 5px;
+    display: block;
+    transition: all .5s ease-in;
+    color: transparent;
+    font-family: sans-serif;
+    font-weight: 500;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+}
+
+input[type]:not(:placeholder-shown):not(:focus):invalid ~.error-msg{
+    -webkit-user-select: auto; /* Safari */
+    -moz-user-select: auto; /* Firefox */
+    -ms-user-select: auto; /* IE 10+ */
+    user-select: auto; /* Standard syntax */
 }
 
 .cross{
@@ -107,6 +150,10 @@ input[type]:not(:placeholder-shown):not(:focus):invalid ~.cross{
     color: transparent;
     font-size: 20px;
     transition: all .5s ease-in;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
 }
 
 
@@ -121,8 +168,7 @@ label {
     text-transform: uppercase;
     color: rgba(255, 255, 255, .6);
     padding: 10px;
-    /* padding-left: clamp(1rem, 5%, 1rem); */
-     user-select: none;
+    user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -166,20 +212,6 @@ input:not(:placeholder-shown) ~ label{
     cursor: pointer;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
-  /* display: inline-block;
-  border-radius: 4px;
-  background-color: #f4511e;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-} */
 
 [type="submit"] span{
     cursor: pointer;
